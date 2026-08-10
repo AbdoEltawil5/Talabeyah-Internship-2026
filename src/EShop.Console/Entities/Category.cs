@@ -1,6 +1,8 @@
-﻿namespace EShop.Console.Entities;
+﻿using EShop.Console.Abstractions;
 
-public class Category
+namespace EShop.Console.Entities;
+
+public class Category : ISummarizable
 {
     public Category(int id, string name, List<Category> subcategories)
     {
@@ -70,7 +72,7 @@ public class Category
         }
     }
 
-    public override string ToString()
+    public string Summarize()
     {
         return $"Id {Id} Name {Name}";
     }

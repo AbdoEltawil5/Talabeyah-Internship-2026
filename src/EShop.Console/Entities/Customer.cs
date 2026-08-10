@@ -67,6 +67,6 @@ public class Customer
 
     public override string ToString()
     {
-        return $"Id {Id}, Name {Name}, Email {Email}, Password {PasswordHash}";
+        return $"Id {Id}, Name {Name}, Email {Email}";
     }
 }

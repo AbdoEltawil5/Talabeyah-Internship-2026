@@ -1,6 +1,8 @@
-﻿namespace EShop.Console.Entities;
+﻿using EShop.Console.Abstractions;
 
-public class Order
+namespace EShop.Console.Entities;
+
+public class Order : ISummarizable
 {
     public Order(int id, int customerId, string status, double totalAmount)
     {
@@ -70,4 +72,8 @@ public class Order
 
     private DateTime _createdAt;
     public DateTime CreatedAt => _createdAt;
+    public string Summarize()
+    {
+        return $"Id {Id}, customerId {CustomerId}, Status {Status}, TotalAmount {TotalAmount}";
+    }
 }
