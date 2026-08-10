@@ -2,8 +2,67 @@
 
 public class Category
 {
-    public int Id { get; set; }
-    public string Name { get; set; }
-    public int? ParentCategoryId { get; set; }
-    public List<Category> subcategories { get; set; }
+    public Category(int id, string name)
+    {
+        
+    }
+    public Category(int id, string name, int parentCategoryId)
+    {
+        
+    }
+    public Category(int id, string name, int parentCategoryId, List<Category> subcategories)
+    {
+        
+    }
+    private int _id;
+    public int Id
+    {
+        get => _id;
+        set
+        {
+            if (value <= 0)
+            {
+                throw new Exception("Id should be higher than zero.");
+            }
+        }
+    }
+
+    private string _name;
+    public string Name
+    {
+        get => _name;
+        set
+        {
+            if (value.Length <= 2)
+            {
+                throw new Exception("user name char number should be more than 2 chars.");
+            }
+        }
+    }
+    
+    private int? _parentCategoryId;
+    public int? ParentCategoryId
+    {
+        get => _parentCategoryId;
+        set
+        {
+            if (value <= 0)
+            {
+                throw new Exception("Id should be higher than zero.");
+            }
+        }
+    }
+    
+    private List<Category> _subcategories;
+    public List<Category> Subcategories
+    {
+        get => _subcategories;
+        set
+        {
+            if (value.Count == 0)
+            {
+                throw new Exception("subcategories Length should be higher than zero.");
+            }
+        }
+    }
 }
