@@ -14,11 +14,11 @@ public class Category
         ParentCategoryId = parentCategoryId;
     }
     
-    private int _id;
-    public int Id
+    private readonly int _id;
+    private int Id
     {
         get => _id;
-        set
+        init
         {
             if (value <= 0)
             {
@@ -36,7 +36,7 @@ public class Category
         {
             if (value.Length <= 2)
             {
-                throw new Exception("user name char number should be more than 2 chars.");
+                throw new Exception("Category name char number should be more than 2 chars.");
             }
             _name = value;
         }
@@ -50,7 +50,7 @@ public class Category
         {
             if (value <= 0)
             {
-                throw new Exception("Id should be higher than zero.");
+                throw new Exception("ParentCategoryId should be higher than zero.");
             }
             _parentCategoryId = value;
         }
@@ -68,5 +68,10 @@ public class Category
             }
             _subcategories = value;
         }
+    }
+
+    public override string ToString()
+    {
+        return $"Id {Id} Name {Name}";
     }
 }

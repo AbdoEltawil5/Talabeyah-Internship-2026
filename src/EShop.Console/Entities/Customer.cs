@@ -1,12 +1,19 @@
 ﻿namespace EShop.Console.Entities;
 
-public class Customer(int Id, string Name, string Email, string PasswordHash)
+public class Customer
 {
-    private int _id;
-    public int Id
+    public Customer(int id, string name, string email, string passwordHash)
+    {
+        Id = id;
+        Name = name;
+        Email = email;
+        PasswordHash = passwordHash;
+    }
+    private readonly int _id;
+    private int Id
     {
         get => _id;
-        set
+        init
         {
             if (value <= 0)
             {
@@ -24,17 +31,17 @@ public class Customer(int Id, string Name, string Email, string PasswordHash)
         {
             if (value.Length <= 2)
             {
-                throw new Exception("user name char number should be more than 2 chars.");
+                throw new Exception("Customer name char number should be more than 2 chars.");
             }
             _name = value;
         }
     }
 
-    private string _email;
-    public string Email
+    private readonly string _email;
+    private string Email
     {
         get => _email;
-        set
+        init
         {
             if (!value.Contains('@') || value.Length < 5)
             {
@@ -56,5 +63,10 @@ public class Customer(int Id, string Name, string Email, string PasswordHash)
             }
             _passwordHash = value;
         }
+    }
+
+    public override string ToString()
+    {
+        return $"Id {Id}, Name {Name}, Email {Email}, Password {PasswordHash}";
     }
 }
