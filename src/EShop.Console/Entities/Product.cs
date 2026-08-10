@@ -1,6 +1,8 @@
+using EShop.Console.Interfaces;
+
 namespace EShop.Console.Entities;
 
-public class Product
+public class Product : ISummarizable
 {
     public Product(string name, decimal price, Guid categoryId, int stockQuantity, string? description)
     {
@@ -17,4 +19,16 @@ public class Product
     public decimal Price { get; set; }
     public int StockQuantity { get; set; }
     public Guid CategoryId { get; set; }
+    public string Summarize()
+    {
+        return $"""
+               =================
+               Product no.: {Id},
+               Name: {Name},
+               Description: {Description},
+               Price: {Price},
+               Quantity: {StockQuantity}
+               =================
+               """;
+    }
 }

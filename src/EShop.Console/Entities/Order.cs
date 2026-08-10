@@ -1,8 +1,9 @@
 using EShop.Console.Entities.Enums;
+using EShop.Console.Interfaces;
 
 namespace EShop.Console.Entities;
 
-public class Order
+public class Order : ISummarizable
 {
     public Order(Guid customerId, Status status, List<OrderItem>? orderItems)
     {
@@ -24,5 +25,18 @@ public class Order
     private decimal GetTotalAmount()
     {
         return OrderItems.Sum(oi => oi.UnitPriceAfterDiscount());
+    }
+
+    public string Summarize()
+    {
+        return $"""
+                ----------------------
+                Order #{Id} 
+                Created at: {CreatedAt}
+                Current Status: {Status}
+                ======================
+                TotalAmount: {TotalAmount}
+                ----------------------
+                """;
     }
 }
