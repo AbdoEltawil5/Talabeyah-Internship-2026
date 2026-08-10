@@ -2,19 +2,18 @@
 
 public class Category
 {
-    public Category(int id, string name)
+    public Category(int id, string name, List<Category> subcategories)
     {
-        
-    }
-    public Category(int id, string name, int parentCategoryId)
-    {
-        
+        _id = id; _name = name;
+        _subcategories = subcategories;
     }
     public Category(int id, string name, int parentCategoryId, List<Category> subcategories)
     {
-        
+        _id = id; _name = name;
+        _parentCategoryId = parentCategoryId;
+        _subcategories = subcategories;
     }
-    private int _id;
+    private readonly int _id;
     public int Id
     {
         get => _id;
