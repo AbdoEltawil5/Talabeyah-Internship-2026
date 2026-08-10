@@ -2,6 +2,14 @@
 
 public class Product
 {
+    public Product(int id, string name, string description, int stockQuantity, int categoryId)
+    {
+        Id = id;
+        Name = name;
+        Description = description;
+        StockQuantity = stockQuantity;
+        CategoryId = categoryId;
+    }
     private readonly int _id;
     private int Id
     {
