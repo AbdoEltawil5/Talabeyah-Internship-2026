@@ -1,6 +1,6 @@
 ﻿namespace EShop.Console.Entities;
 
-public class Customer(int id, string name, string email, string passwordHash)
+public class Customer(int Id, string Name, string Email, string PasswordHash)
 {
     private int _id;
     public int Id
@@ -12,6 +12,7 @@ public class Customer(int id, string name, string email, string passwordHash)
             {
                 throw new Exception("Id should be higher than zero.");
             }
+            _id = value;
         }
     }
     
@@ -25,6 +26,7 @@ public class Customer(int id, string name, string email, string passwordHash)
             {
                 throw new Exception("user name char number should be more than 2 chars.");
             }
+            _name = value;
         }
     }
 
@@ -34,10 +36,11 @@ public class Customer(int id, string name, string email, string passwordHash)
         get => _email;
         set
         {
-            if (!value.Contains('@'))
+            if (!value.Contains('@') || value.Length < 5)
             {
                 throw new Exception("Please Enter a Valid Email");
             }
+            _email = value;
         }
     }
 
@@ -51,6 +54,7 @@ public class Customer(int id, string name, string email, string passwordHash)
             {
                 throw new Exception("Password Should be more then 6 chars");
             }
+            _passwordHash = value;
         }
     }
 }

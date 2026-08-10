@@ -4,16 +4,17 @@ public class Category
 {
     public Category(int id, string name, List<Category> subcategories)
     {
-        _id = id; _name = name;
-        _subcategories = subcategories;
+        Id = id; Name = name;
+        Subcategories = subcategories;
     }
     public Category(int id, string name, int parentCategoryId, List<Category> subcategories)
     {
-        _id = id; _name = name;
-        _parentCategoryId = parentCategoryId;
-        _subcategories = subcategories;
+        Id = id; Name = name;
+        Subcategories = subcategories;
+        ParentCategoryId = parentCategoryId;
     }
-    private readonly int _id;
+    
+    private int _id;
     public int Id
     {
         get => _id;
@@ -23,6 +24,7 @@ public class Category
             {
                 throw new Exception("Id should be higher than zero.");
             }
+            _id = value;
         }
     }
 
@@ -36,6 +38,7 @@ public class Category
             {
                 throw new Exception("user name char number should be more than 2 chars.");
             }
+            _name = value;
         }
     }
     
@@ -49,6 +52,7 @@ public class Category
             {
                 throw new Exception("Id should be higher than zero.");
             }
+            _parentCategoryId = value;
         }
     }
     
@@ -62,6 +66,7 @@ public class Category
             {
                 throw new Exception("subcategories Length should be higher than zero.");
             }
+            _subcategories = value;
         }
     }
 }
