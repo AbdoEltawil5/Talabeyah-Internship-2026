@@ -1,10 +1,11 @@
 ﻿using EShop.Console.Abstractions;
+using EShop.Console.Enums;
 
 namespace EShop.Console.Entities;
 
 public class Order : ISummarizable
 {
-    public Order(int id, int customerId, string status, double totalAmount)
+    public Order(int id, int customerId, Status status, double totalAmount)
     {
         Id = id;
         CustomerId = customerId;
@@ -40,15 +41,15 @@ public class Order : ISummarizable
         }
     }
 
-    private string _status;
-    public string Status
+    private Status _status;
+    public Status Status
     {
         get => _status;
         set
         {
-            if (value.Length <= 2)
+            if (value != Status.Arrived || value != Status.Pending || value != Status.Ready)
             {
-                throw new Exception("user name char number should be more than 2 chars.");
+                throw new Exception("Please enter a valid order Status.");
             }
             _status = value;
             _createdAt = DateTime.Now;
