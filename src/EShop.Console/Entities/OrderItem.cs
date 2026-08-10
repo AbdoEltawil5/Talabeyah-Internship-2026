@@ -2,8 +2,20 @@ namespace EShop.Console.Entities;
 
 public class OrderItem
 {
-    public Guid OrderId { get; set; }
-    public Guid ProductId { get; set; }
-    public decimal UnitPrice { get; set; }
-    public decimal Discount { get; set; }
+    public OrderItem(Guid orderId, Guid productId, decimal unitPrice, decimal discount)
+    {
+        OrderId = orderId;
+        ProductId = productId;
+        UnitPrice = unitPrice;
+        Discount = discount;
+    }
+    public Guid OrderId { get; }
+    public Guid ProductId { get; }
+    public decimal UnitPrice { get; }
+    public decimal Discount { get; }
+
+    public decimal UnitPriceAfterDiscount()
+    {
+        return UnitPrice - Discount;
+    }
 }
