@@ -20,3 +20,14 @@ productsCountTest.Add(new KeyValuePair<Product, int>(p2, 14));
 productsCountTest.Add(new KeyValuePair<Product, int>(p3, 11));
 
 orderService.OrderProcessing(productsCountTest, 7);
+
+var customer = new Customer(1,"ahmed","mmm@adsa.com","965132adsd");
+
+var customer2 = new Customer();
+customer2.Name = "ibrahim";
+
+
+var customer3 = new Customer()
+{
+    Name = "samy"
+};

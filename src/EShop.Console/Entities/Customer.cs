@@ -4,6 +4,10 @@ namespace EShop.Console.Entities;
 
 public class Customer : ISummarizable
 {
+    public Customer()
+    {
+        
+    }
     public Customer(int id, string name, string email, string passwordHash)
     {
         Id = id;

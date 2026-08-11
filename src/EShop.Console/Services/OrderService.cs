@@ -3,9 +3,9 @@ using EShop.Console.Entities;
 
 namespace EShop.Console.Services;
 
-public class OrderService(INotification notification, IAppDbContext appDbContext) : IOrderService
+public class OrderService(Notification notification, IAppDbContext appDbContext) : IOrderService
 {
-    private readonly INotification _notification = notification;
+    private readonly Notification _notification = notification;
     private readonly IAppDbContext _appDbContext = appDbContext;
 
     public bool OrderProcessing(List<KeyValuePair<Product, int>> productsCount, double discountPercentage)

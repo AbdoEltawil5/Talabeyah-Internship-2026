@@ -2,9 +2,9 @@
 
 namespace EShop.Console.Services;
 
-public class SmsNotification : Notification, INotification
+public class SmsNotification : Notification
 {
-    public bool SendConfirmationMessage()
+    public override bool SendConfirmationMessage()
     {
         System.Console.WriteLine("SmsNotification msg");
         return true;

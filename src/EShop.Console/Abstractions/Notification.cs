@@ -2,5 +2,5 @@
 
 public abstract class Notification
 {
-
+    public abstract bool SendConfirmationMessage();
 }
