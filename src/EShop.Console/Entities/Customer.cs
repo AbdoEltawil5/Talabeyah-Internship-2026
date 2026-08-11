@@ -1,6 +1,8 @@
-﻿namespace EShop.Console.Entities;
+﻿using EShop.Console.Abstractions;
 
-public class Customer
+namespace EShop.Console.Entities;
+
+public class Customer : ISummarizable
 {
     public Customer(int id, string name, string email, string passwordHash)
     {
@@ -65,7 +67,7 @@ public class Customer
         }
     }
 
-    public override string ToString()
+    public string SummarizeEntityData()
     {
         return $"Id {Id}, Name {Name}, Email {Email}";
     }

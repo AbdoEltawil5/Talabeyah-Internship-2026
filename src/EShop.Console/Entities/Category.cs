@@ -2,7 +2,7 @@
 
 namespace EShop.Console.Entities;
 
-public class Category : ISummarizable
+public class Category
 {
     public Category(int id, string name, List<Category> subcategories)
     {
@@ -72,7 +72,7 @@ public class Category : ISummarizable
         }
     }
 
-    public string SummarizeEntity()
+    public override string ToString()
     {
         return $"Id {Id} Name {Name}";
     }

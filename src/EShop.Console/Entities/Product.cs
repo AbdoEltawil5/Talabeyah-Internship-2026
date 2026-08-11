@@ -1,6 +1,8 @@
-﻿namespace EShop.Console.Entities;
+﻿using EShop.Console.Abstractions;
 
-public class Product
+namespace EShop.Console.Entities;
+
+public class Product : ISummarizable
 {
     public Product(int id, string name, string description, double price,int stockQuantity, int categoryId)
     {
@@ -91,5 +93,10 @@ public class Product
             }
             _categoryId = value;
         }
+    }
+
+    public string SummarizeEntityData()
+    {
+        return $"Id {Id} Name {Name} Desc {Description} Price {Price} StockQuantity {StockQuantity} CategoryId";
     }
 }
