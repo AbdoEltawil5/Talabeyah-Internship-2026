@@ -2,5 +2,5 @@
 
 public interface INotification
 {
-    public bool SendConfirmation();
+    public bool SendConfirmationMessage();
 }

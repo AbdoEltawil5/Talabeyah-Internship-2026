@@ -2,5 +2,5 @@
 
 public interface ISummarizable
 {
-    public string Summarize();
+    public string SummarizeEntity();
 }

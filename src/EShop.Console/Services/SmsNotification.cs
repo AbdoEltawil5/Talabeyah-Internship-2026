@@ -4,7 +4,7 @@ namespace EShop.Console.Services;
 
 public class SmsNotification : Notification, INotification
 {
-    public bool SendConfirmation()
+    public bool SendConfirmationMessage()
     {
         System.Console.WriteLine("SmsNotification msg");
         return true;

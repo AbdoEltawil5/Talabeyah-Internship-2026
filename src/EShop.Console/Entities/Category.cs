@@ -72,7 +72,7 @@ public class Category : ISummarizable
         }
     }
 
-    public string Summarize()
+    public string SummarizeEntity()
     {
         return $"Id {Id} Name {Name}";
     }

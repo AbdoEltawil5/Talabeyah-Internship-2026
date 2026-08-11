@@ -15,7 +15,7 @@ public class OrderService(INotification notification, IAppDbContext appDbContext
         {
             if (productCount.Key.StockQuantity < productCount.Value)
             {
-                System.Console.WriteLine($"Can't provide {productCount.Value} amount from {productCount.Key.Name} product. We only have {productCount.Key.StockQuantity}");
+                System.Console.WriteLine($"Can't provide {productCount.Value} amount from {productCount.Key.Name} product. We have only {productCount.Key.StockQuantity}");
                 return false;
             }
 
@@ -26,7 +26,7 @@ public class OrderService(INotification notification, IAppDbContext appDbContext
         orderTotal = appliedDiscountPercentage(orderTotal, discountPercentage);
         System.Console.WriteLine($"order Total is {orderTotal}");
         AppDbContext.SaveChanges();
-        _notification.SendConfirmation();
+        _notification.SendConfirmationMessage();
 
         return true;
     }
