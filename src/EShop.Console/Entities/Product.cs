@@ -4,7 +4,7 @@ namespace EShop.Console.Entities;
 
 public class Product : ISummarizable
 {
-    public Product(string name, decimal price, Guid categoryId, int stockQuantity, string? description)
+    public Product(string name, decimal price, Guid categoryId, int stockQuantity, string? description = null)
     {
         Id = Guid.NewGuid();
         Name = name;
