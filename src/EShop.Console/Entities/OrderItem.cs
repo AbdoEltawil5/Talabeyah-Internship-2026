@@ -18,6 +18,6 @@ public class OrderItem
 
     public decimal UnitPriceAfterDiscount()
     {
-        return UnitPrice - Discount;
+        return (UnitPrice - Discount) * Quantity;
     }
 }
