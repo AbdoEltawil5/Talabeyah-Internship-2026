@@ -14,7 +14,7 @@ public class Product : ISummarizable
         CategoryId = categoryId;
     }
     private readonly int _id;
-    private int Id
+    public int Id
     {
         get => _id;
         init
@@ -81,11 +81,11 @@ public class Product : ISummarizable
         }
     }
 
-    private readonly int _categoryId;
-    private int CategoryId
+    private int _categoryId;
+    public int CategoryId
     {
         get => _categoryId;
-        init
+        set
         {
             if (value <= 0)
             {

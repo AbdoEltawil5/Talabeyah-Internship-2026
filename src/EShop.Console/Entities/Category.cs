@@ -17,7 +17,7 @@ public class Category
     }
     
     private readonly int _id;
-    private int Id
+    public int Id
     {
         get => _id;
         init

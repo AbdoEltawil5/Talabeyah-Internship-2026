@@ -14,7 +14,7 @@ public class Order : ISummarizable
         CreatedAt = DateTime.Now;
     }
     private readonly int _id;
-    private int Id
+    public int Id
     {
         get => _id;
         init
@@ -27,11 +27,11 @@ public class Order : ISummarizable
         }
     }
     
-    private readonly int _customerId;
-    private int CustomerId
+    private int _customerId;
+    public int CustomerId
     {
         get => _customerId;
-        init
+        set
         {
             if (value <= 0)
             {

@@ -12,7 +12,7 @@ public class Customer : ISummarizable
         PasswordHash = passwordHash;
     }
     private readonly int _id;
-    private int Id
+    public int Id
     {
         get => _id;
         init
@@ -39,11 +39,11 @@ public class Customer : ISummarizable
         }
     }
 
-    private readonly string _email;
-    private string Email
+    private string _email;
+    public string Email
     {
         get => _email;
-        init
+        set
         {
             if (!value.Contains('@') || value.Length < 5)
             {
