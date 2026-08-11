@@ -5,9 +5,9 @@ namespace EShop.Console.Entities;
 
 public class Order : ISummarizable
 {
-    public Order(Guid customerId, Status status, List<OrderItem>? orderItems)
+    public Order(Guid id, Guid customerId, List<OrderItem>? orderItems, Status status = Status.Pending)
     {
-        Id = Guid.NewGuid();
+        Id = id;
         CustomerId = customerId;
         Status = status;
         CreatedAt =  DateTime.UtcNow;
