@@ -11,7 +11,7 @@ public class Order : ISummarizable
         CustomerId = customerId;
         Status = status;
         TotalAmount = totalAmount;
-        _createdAt = DateTime.Now;
+        CreatedAt = DateTime.Now;
     }
     private readonly int _id;
     private int Id
@@ -47,12 +47,11 @@ public class Order : ISummarizable
         get => _status;
         set
         {
-            if (value != Status.Arrived || value != Status.Pending || value != Status.Ready)
+            if (value != Status.Arrived && value != Status.Pending && value != Status.Ready)
             {
                 throw new Exception("Please enter a valid order Status.");
             }
             _status = value;
-            _createdAt = DateTime.Now;
         }
     }
 
@@ -67,12 +66,9 @@ public class Order : ISummarizable
                 throw new Exception("TotalAmount Should be higher than zero.");
             }
             _totalAmount = value;
-            _createdAt = DateTime.Now;
         }
     }
-
-    private DateTime _createdAt;
-    public DateTime CreatedAt => _createdAt;
+    public DateTime CreatedAt { get; }
     public string Summarize()
     {
         return $"Id {Id}, customerId {CustomerId}, Status {Status}, TotalAmount {TotalAmount}";

@@ -2,11 +2,12 @@
 
 public class Product
 {
-    public Product(int id, string name, string description, int stockQuantity, int categoryId)
+    public Product(int id, string name, string description, double price,int stockQuantity, int categoryId)
     {
         Id = id;
         Name = name;
         Description = description;
+        Price = price;
         StockQuantity = stockQuantity;
         CategoryId = categoryId;
     }
@@ -70,9 +71,9 @@ public class Product
         get => _stockQuantity;
         set
         {
-            if (value <= 0)
+            if (value < 0)
             {
-                throw new Exception("StockQuantity shouldn't be lower than or equal to 0");
+                throw new Exception("StockQuantity shouldn't be lower than 0");
             }
             _stockQuantity = value;
         }
