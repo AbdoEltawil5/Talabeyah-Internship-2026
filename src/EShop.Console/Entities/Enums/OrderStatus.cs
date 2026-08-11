@@ -1,6 +1,6 @@
 namespace EShop.Console.Entities.Enums;
 
-public enum Status
+public enum OrderStatus
 {
     Pending,
     Approved,
