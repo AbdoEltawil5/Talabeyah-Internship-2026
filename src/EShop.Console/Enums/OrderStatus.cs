@@ -1,6 +1,6 @@
 ﻿namespace EShop.Console.Enums;
 
-public enum Status
+public enum OrderStatus
 {
     Pending, 
     Ready, 

@@ -5,11 +5,11 @@ namespace EShop.Console.Entities;
 
 public class Order : ISummarizable
 {
-    public Order(int id, int customerId, Status status, double totalAmount)
+    public Order(int id, int customerId, OrderStatus orderStatus, double totalAmount)
     {
         Id = id;
         CustomerId = customerId;
-        Status = status;
+        OrderStatus = orderStatus;
         TotalAmount = totalAmount;
         CreatedAt = DateTime.Now;
     }
@@ -41,17 +41,17 @@ public class Order : ISummarizable
         }
     }
 
-    private Status _status;
-    public Status Status
+    private OrderStatus _orderStatus;
+    public OrderStatus OrderStatus
     {
-        get => _status;
+        get => _orderStatus;
         set
         {
-            if (value != Status.Arrived && value != Status.Pending && value != Status.Ready)
+            if (!Enum.IsDefined(typeof(OrderStatus), value))
             {
                 throw new Exception("Please enter a valid order Status.");
             }
-            _status = value;
+            _orderStatus = value;
         }
     }
 
@@ -71,6 +71,6 @@ public class Order : ISummarizable
     public DateTime CreatedAt { get; }
     public string SummarizeEntityData()
     {
-        return $"Id {Id}, customerId {CustomerId}, Status {Status}, TotalAmount {TotalAmount}";
+        return $"Id {Id}, customerId {CustomerId}, Status {OrderStatus}, TotalAmount {TotalAmount}";
     }
 }
