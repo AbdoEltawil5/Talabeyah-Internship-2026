@@ -11,8 +11,8 @@ public class Order : ISummarizable
         CustomerId = customerId;
         Status = status;
         CreatedAt =  DateTime.UtcNow;
-        TotalAmount = GetTotalAmount();
         OrderItems = orderItems ?? new List<OrderItem>();
+        TotalAmount = GetTotalAmount();
     }
 
     public Guid Id { get; set; }
