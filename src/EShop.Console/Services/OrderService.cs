@@ -6,7 +6,7 @@ namespace EShop.Console.Services;
 public class OrderService(INotification notification, IAppDbContext appDbContext) : IOrderService
 {
     private readonly INotification _notification = notification;
-    private readonly IAppDbContext AppDbContext = appDbContext;
+    private readonly IAppDbContext _appDbContext = appDbContext;
 
     public bool OrderProcessing(List<KeyValuePair<Product, int>> productsCount, double discountPercentage)
     {
@@ -25,7 +25,7 @@ public class OrderService(INotification notification, IAppDbContext appDbContext
 
         orderTotal = appliedDiscountPercentage(orderTotal, discountPercentage);
         System.Console.WriteLine($"order Total is {orderTotal}");
-        AppDbContext.SaveChanges();
+        _appDbContext.SaveChanges();
         _notification.SendConfirmationMessage();
 
         return true;

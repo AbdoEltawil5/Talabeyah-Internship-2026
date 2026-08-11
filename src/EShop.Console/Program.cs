@@ -17,7 +17,6 @@ Product p3 = new Product(4, "leban", "bla bla bla", 2,11, 3);
 
 productsCountTest.Add(new KeyValuePair<Product, int>(p1, 11));
 productsCountTest.Add(new KeyValuePair<Product, int>(p2, 14));
-productsCountTest.Add(new KeyValuePair<Product, int>(p3, 1));
-productsCountTest.Add(new KeyValuePair<Product, int>(p1, 66));
+productsCountTest.Add(new KeyValuePair<Product, int>(p3, 11));
 
 orderService.OrderProcessing(productsCountTest, 7);
