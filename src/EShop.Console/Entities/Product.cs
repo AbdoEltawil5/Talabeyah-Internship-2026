@@ -95,7 +95,7 @@ public class Product : ISummarizable
         }
     }
 
-    public string SummarizeEntityData()
+    public string SummarizeData()
     {
         return $"Id {Id} Name {Name} Desc {Description} Price {Price} StockQuantity {StockQuantity} CategoryId";
     }

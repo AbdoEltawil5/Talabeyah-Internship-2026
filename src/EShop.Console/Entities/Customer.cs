@@ -67,7 +67,7 @@ public class Customer : ISummarizable
         }
     }
 
-    public string SummarizeEntityData()
+    public string SummarizeData()
     {
         return $"Id {Id}, Name {Name}, Email {Email}";
     }

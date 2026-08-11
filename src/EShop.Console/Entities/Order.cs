@@ -69,7 +69,7 @@ public class Order : ISummarizable
         }
     }
     public DateTime CreatedAt { get; }
-    public string SummarizeEntityData()
+    public string SummarizeData()
     {
         return $"Id {Id}, customerId {CustomerId}, Status {OrderStatus}, TotalAmount {TotalAmount}";
     }
