@@ -21,7 +21,7 @@ public class OrderService : IOrderService
         List<OrderItem> orderItems = new List<OrderItem>();
         foreach (var item in orderDto.OrderItemsDto)
         {
-            var orderItem = new OrderItem(orderId, item.ProductId, item.UnitPrice, item.Discount);
+            var orderItem = new OrderItem(orderId, item.ProductId, item.UnitPrice, item.Discount, item.Quantity);
             orderItems.Add(orderItem);
         }
 

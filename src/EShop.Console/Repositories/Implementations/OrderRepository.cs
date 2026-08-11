@@ -1,5 +1,4 @@
 using EShop.Console.Entities;
-using EShop.Console.Entities.Enums;
 using EShop.Console.Repositories.Interfaces;
 
 namespace EShop.Console.Repositories.Implementations;
@@ -20,7 +19,8 @@ public class OrderRepository : IOrderRepository
             {
                 var unitPrice = random.Next(10, 100);
                 var discount = random.Next(1, unitPrice / 2);
-                var item = new OrderItem(order.Id, Guid.NewGuid(), unitPrice, discount);
+                var quantity = random.Next(1, 100);
+                var item = new OrderItem(order.Id, Guid.NewGuid(), unitPrice, discount, quantity);
                 order.OrderItems.Add(item);
             }
 
