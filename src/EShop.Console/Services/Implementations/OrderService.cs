@@ -25,7 +25,7 @@ public class OrderService : IOrderService
             orderItems.Add(orderItem);
         }
 
-        Order order = new Order(orderId, orderDto.CustomerId, orderItems, orderDto.Status ?? Status.Pending);
+        Order order = new Order(orderId, orderDto.CustomerId, orderItems, orderDto.OrderStatus);
         var newOrderId = _orderRepository.Add(order);
         
         return newOrderId;
