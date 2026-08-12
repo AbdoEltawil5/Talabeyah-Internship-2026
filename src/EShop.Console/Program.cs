@@ -55,3 +55,18 @@ Console.WriteLine(product3.Summarize());
 Console.WriteLine(cart.Summarize());
 Console.WriteLine(order.Summarize());
 Console.WriteLine(customer.Summarize());
+Console.WriteLine();
+
+var orderService = new OrderService();
+
+var bigOrder = new Order(Guid.NewGuid(), "Pending", new Money(0m), customer.Id);
+for (int i = 0; i < 50; i++)
+{
+    bigOrder.AddItem(product1, 1);
+}
+
+Console.WriteLine("receipt with string:");
+Console.WriteLine(orderService.GetOrderRecieptWithString(bigOrder));
+
+Console.WriteLine("receipt with stringbuilder:");
+Console.WriteLine(orderService.GetOrderRecieptWithStringBuilder(bigOrder));
