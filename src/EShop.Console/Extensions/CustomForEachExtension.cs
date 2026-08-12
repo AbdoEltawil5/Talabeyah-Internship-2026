@@ -4,7 +4,7 @@ public static class CustomForEachExtension
 {
     public static void CustomForEach<T>(this IEnumerable<T> enumerable, Action<T> action)
     {
-        var enumerator = enumerable.GetEnumerator();
+        using var enumerator = enumerable.GetEnumerator();
         while (enumerator.MoveNext())
         {
             T item = enumerator.Current;
