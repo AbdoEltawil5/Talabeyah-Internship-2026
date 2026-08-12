@@ -1,3 +1,5 @@
+using EShop.Console.ValueObjects;
+
 namespace EShop.Console.Entities;
 
 public class OrderItem
@@ -7,9 +9,9 @@ public class OrderItem
     public Product Product { get; private set; }
     public Guid OrderId { get; private set; }
     public int Quantity { get; private set; }
-    public decimal Price { get; private set; }
+    public Money Price { get; private set; }
 
-    public OrderItem(Guid id, Guid orderId, Product product, int quantity, decimal price)
+    public OrderItem(Guid id, Guid orderId, Product product, int quantity, Money price)
     {
         Id = id;
         OrderId = orderId;
@@ -19,5 +21,5 @@ public class OrderItem
         Price = price;
     }
 
-    public decimal LineTotal => Price * Quantity;
+    public Money LineTotal => Price.Multiply(Quantity);
 }
