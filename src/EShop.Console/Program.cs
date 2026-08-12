@@ -64,12 +64,19 @@ using EShop.Console.Shared;
 //---------------- Task 2 ---------------------
 //=============================================
 
+//IProductService productService = new ProductService();
+// var products = productService.GetProducts();
+//
+// Console.WriteLine("This message appears before iteration start.\n");
+//
+// foreach (var product in products)
+// {
+//     Console.WriteLine(product);
+// }
+
 IProductService productService = new ProductService();
-var products = productService.GetProducts();
+IOrderService orderService = new OrderService(productService);
 
-Console.WriteLine("This message appears before iteration start.\n");
+Console.WriteLine(orderService.GetOrderReceipt_String());
 
-foreach (var product in products)
-{
-    Console.WriteLine(product);
-}
+//Console.WriteLine(orderService.GetOrderReceipt_StringBuilder());
