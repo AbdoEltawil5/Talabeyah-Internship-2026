@@ -1,4 +1,5 @@
 using EShop.Console.Abstractions;
+using EShop.Console.Shared;
 
 namespace EShop.Console.Entities;
 
@@ -20,9 +21,9 @@ public class Cart : ISummarizable
         CustomerId = customerId;
     }
 
-    public void AddItem(Guid productId, int quantity)
+    public void AddItem(Guid productId, int quantity, Money price)
     {
-        Items.Add(new CartItem(Guid.NewGuid(), Id, productId, quantity));
+        Items.Add(new CartItem(Guid.NewGuid(), Id, productId, quantity, price));
     }
 
     public void RemoveItem(Guid productId)
