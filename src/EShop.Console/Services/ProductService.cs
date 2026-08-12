@@ -8,12 +8,11 @@ public class ProductService
     public IEnumerable<Product> GetProducts(int pageNumber = 1, int pageSize = 2)
     {
         GenerateProductsData();
-        List<Product> _productsDisplay = _products.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList();
         System.Console.WriteLine("Welcome to GetProducts()");
-        for (int i = 0; i < _productsDisplay.Count; i++)
+        for (int i = 0; i < _products.Count; i++)
         {
             System.Console.WriteLine("Product Number "+ (i+1));
-            yield return _productsDisplay[i];
+            yield return _products[i];
         }
     }
 
