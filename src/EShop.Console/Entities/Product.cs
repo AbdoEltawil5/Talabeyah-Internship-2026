@@ -7,12 +7,12 @@ public class Product : ISummarizable
     public Guid Id { get; private set; }
     public string Name { get; private set; }
     public string Description { get; private set; }
-    public decimal Price { get; private set; }
+    public Money Price { get;  set; }
     public int StockQuantity { get; private set; }
     public Guid CategoryId { get; private set; }
     public Category Category { get; private set; }
 
-    public Product(Guid id, string name, string description, decimal price, int stockQuantity, Category category)
+    public Product(Guid id, string name, string description, Money price, int stockQuantity, Category category)
     {
         if (id == Guid.Empty)
             throw new ArgumentException("Id cannot be empty");
@@ -20,7 +20,7 @@ public class Product : ISummarizable
         if (string.IsNullOrWhiteSpace(name))
             throw new ArgumentException("Product name cannot be null or whitespace.");
 
-        if (price <= 0)
+        if (price.getAmount() <= 0)
             throw new ArgumentException("Product price cannot be less than zero.");
 
         if (stockQuantity < 0)
@@ -45,6 +45,6 @@ public class Product : ISummarizable
 
     public string Summarize()
     {
-        return $"Product: {Name}, Price: {Price}, Stock: {StockQuantity}";
+        return $"Product: {Name}, Price: {Price.getAmount()}, Stock: {StockQuantity}";
     }
 }
