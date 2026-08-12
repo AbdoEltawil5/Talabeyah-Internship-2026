@@ -1,5 +1,6 @@
 using EShop.Console.Dtos;
 using EShop.Console.Entities;
+using EShop.Console.Extensions;
 using EShop.Console.Notifications;
 using EShop.Console.Services;
 using EShop.Console.ValueObjects;
@@ -22,6 +23,8 @@ cart.AddItem(product2.Id, 1);
 cart.AddItem(product3.Id, 1);
 
 var products = new List<Product> { product1, product2, product3 };
+
+Console.WriteLine($"Cart total: {cart.TotalPrice(products)} \n");
 
 var productService = new ProductService(products);
 
