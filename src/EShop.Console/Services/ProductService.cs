@@ -5,16 +5,11 @@ namespace EShop.Console.Services;
 
 public class ProductService : IProductService
 {
-    public IEnumerable<ProductDto> GetProducts(int pageNumber = 1, int pageSize = 5)
+    public IEnumerable<ProductDto> GetProducts()
     {
-        if (pageNumber < 1)
-            pageNumber = 1;
+        var startIndex = 0;
+        var endIndex = DummyData.Products.Count;
         
-        if (pageSize < 1)
-            pageSize = 5;
-        
-        var startIndex = (pageNumber - 1) * pageSize;
-        var endIndex = pageNumber * pageSize;
         System.Console.WriteLine("Start iteration.");
         while (startIndex < endIndex)
         {
