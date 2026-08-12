@@ -2,10 +2,10 @@
 
 namespace EShop.Console.Services;
 
-public class ProductService
+public class ProductService : IProductService
 {
     private List<Product> _products = new List<Product>();
-    public IEnumerable<Product> GetProducts(int pageNumber = 1, int pageSize = 2)
+    public IEnumerable<Product> GetProducts()
     {
         GenerateProductsData();
         System.Console.WriteLine("Welcome to GetProducts()");
