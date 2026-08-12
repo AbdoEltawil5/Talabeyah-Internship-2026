@@ -18,11 +18,11 @@ See [Tasks](#tasks) below for the full task list and acceptance criteria.
 
 Everyone converges on one winning PR each round — a competition and a shared build.
 
-1. Each round, everyone starts from the current `develop` (already contains the previous round's winning PR — except Round 1, where it's just this skeleton).
-2. Create a fresh branch off latest `develop`: `feature/round<N>-<yourname>`.
-3. At the end of the round, open a PR from your branch → `develop`.
+1. Each round, everyone starts from the current `main` (already contains the previous round's winning PR — except Round 1, where it's just this skeleton).
+2. Create a fresh branch off latest `main`: `feature/round<N>-<yourname>`.
+3. At the end of the round, open a PR from your branch → `main` and `develop`.
 4. PRs are judged against that round's acceptance criteria; one winner merges into `develop`.
-5. Before the next round starts, everyone pulls the updated `develop` and branches off it again — including non-winners, who continue on top of the winning implementation rather than their own.
+5. Before the next round starts, everyone pulls the updated `main` and `develop` and branches off it again — including non-winners, who continue on top of the winning implementation rather than their own.
 
 If you didn't win a round, your next branch is based on someone else's code, not yours. Skim the merged PR's diff before starting the next round's task.
 
@@ -192,3 +192,23 @@ For example, dependencies should be represented through interfaces/abstractions 
 * The design is easy to extend and test.
 ervices/IExampleService.cs` + `ExampleService.cs` are a worked example of this pattern — follow it for the real entities.
 
+---
+
+## Task 2 — C# Language Deep Dive
+
+Task 2.1 — record / class / struct (value vs. reference semantics)  
+Create ProductDto as a record with to get productName, UnitPrice, StockQuantity. 
+Create a Money struct (Amount, Currency) used for Product.Price and Order.TotalAmount instead of a raw decimal.
+
+Task 2.2 — foreach / yield (deferred execution)  
+Build a paginated product list iterator: GetProducts() implemented with yield return, pulling from an in-memory list, so pages are only materialized when enumerated.
+Prove deferred execution: add a Console.WriteLine inside the iterator and show it only fires when you actually foreach over the result, not when you call the method.
+
+Task 2.3 — string vs. StringBuilder  
+Build an GetOrderReceipt in OrderService that generates a text receipt (header, line items, total) for an order with 50+ items.
+Implement one version with string += in a loop and one with StringBuilder.
+
+Task 2.4 — Extension methods  
+create Extention directory with extension methods on Cart entity : .TotalPrice() (sums Quantity * Price)
+
+---
