@@ -27,9 +27,6 @@ public class Product : ISummarizable
         if (stockQuantity < 0)
             throw new ArgumentException("Product stock quantity cannot be less than zero.");
 
-        if (category.ParentCategoryId == null)
-            throw new ArgumentException("You must add SubCategory not ParentCategory");
-
         Id = id;
         Name = name;
         Description = description;
