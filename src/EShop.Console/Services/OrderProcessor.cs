@@ -1,5 +1,6 @@
 using EShop.Console.Entities;
 using EShop.Console.Notifications;
+using EShop.Console.Shared;
 
 namespace EShop.Console.Services;
 
@@ -29,7 +30,7 @@ public class OrderProcessor
 
         _stockValidator.Validate(cart, products);
 
-        decimal subtotal = 0;
+        Money subtotal = new Money();
         foreach (var item in cart.Items)
         {
             var product = products.FirstOrDefault(p => p.Id == item.ProductId);
@@ -41,7 +42,7 @@ public class OrderProcessor
 
         var total = _discountService.Apply(subtotal);
 
-        var order = new Order(Guid.NewGuid(), "Pending", 0m, cart.CustomerId);
+        var order = new Order(Guid.NewGuid(), "Pending", new Money(), cart.CustomerId);
 
         foreach (var item in cart.Items)
         {

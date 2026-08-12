@@ -1,12 +1,13 @@
 using EShop.Console.Entities;
 using EShop.Console.Notifications;
 using EShop.Console.Services;
+using EShop.Console.Shared;
 
 var parentCategory = new Category(Guid.NewGuid(), "Electronics", null);
 var phones = new Category(Guid.NewGuid(), "Phones", parentCategory.Id);
 parentCategory.AddSubCategory(phones);
 
-var product = new Product(Guid.NewGuid(), "Iphone", "Iphone 17 pro max", 50000m, 10, phones);
+var product = new Product(Guid.NewGuid(), "Iphone", "Iphone 17 pro max", new Money(50000m), 10, phones);
 phones.AddProduct(product);
 
 var customer = new Customer(Guid.NewGuid(), "Baselyosry", "baselyosry@gmail.com", "password");
