@@ -1,4 +1,5 @@
 using EShop.Console.Entities;
+using EShop.Console.Extensions;
 using EShop.Console.Notifications;
 using EShop.Console.Services;
 using EShop.Console.Shared;
@@ -64,19 +65,23 @@ using EShop.Console.Shared;
 //---------------- Task 2 ---------------------
 //=============================================
 
-//IProductService productService = new ProductService();
-// var products = productService.GetProducts();
-//
-// Console.WriteLine("This message appears before iteration start.\n");
-//
+IProductService productService = new ProductService();
+Console.WriteLine("before getproducts called");
+var products = productService.GetProducts();
+Console.WriteLine("after getproducts called");
+
+products.CustomForEach(p => Console.WriteLine(p));
+
+//Console.WriteLine("This message appears before iteration start.\n");
+
 // foreach (var product in products)
 // {
 //     Console.WriteLine(product);
 // }
 
-IProductService productService = new ProductService();
-IOrderService orderService = new OrderService(productService);
+// IProductService productService = new ProductService();
+// IOrderService orderService = new OrderService(productService);
 
-Console.WriteLine(orderService.GetOrderReceipt_String());
+//Console.WriteLine(orderService.GetOrderReceipt_String());
 
 //Console.WriteLine(orderService.GetOrderReceipt_StringBuilder());
