@@ -1,4 +1,5 @@
 using EShop.Console.Abstractions;
+using EShop.Console.Dtos;
 using EShop.Console.Shared;
 
 namespace EShop.Console.Entities;
@@ -39,6 +40,11 @@ public class Product : ISummarizable
     public void ReduceStock(int quantity)
     {
         StockQuantity -= quantity;
+    }
+    
+    public ProductDto MapToDto()
+    {
+        return new ProductDto(Name, Price, StockQuantity);
     }
 
     public string Summarize()
