@@ -32,9 +32,7 @@ public class Order : ISummarizable
     public void AddItem(Product product, int quantity)
     {
         OrderItems.Add(new OrderItem(Guid.NewGuid(), Id, product, quantity, product.Price.getAmount()));
-        Money m = TotalAmount;
-        m.setAmount(m.getAmount() + (product.Price.getAmount() * quantity));
-        TotalAmount = m;
+        TotalAmount = TotalAmount.setAmount(TotalAmount.getAmount() + (product.Price.getAmount() * quantity));
     }
 
     public void UpdateStatus(string status)

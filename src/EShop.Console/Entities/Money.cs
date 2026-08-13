@@ -9,20 +9,20 @@ public struct Money(decimal amount, Currency currency)
     {
         return _amount;
     }
-    public void setAmount(decimal amount)
+    public Money setAmount(decimal amount)
     {
-        _amount = amount;
+        return new Money(amount, this._currency);
     }
     public Currency getCurrency()
     {
         return _currency;
     }
-    public void setCurrency(Currency currency)
+    public Money setCurrency(Currency currency)
     {
         if (!Enum.IsDefined(typeof(Currency), currency))
         {
             System.Console.WriteLine("Please Enter a valid Enum.");
         }
-        _currency = currency;
+        return new Money(this._amount, currency);
     }
 }
