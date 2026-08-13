@@ -36,12 +36,12 @@ public class OrderProcessor
             if (product is null)
                 throw new InvalidOperationException($"Product {item.ProductId} not found.");
             
-            subtotal += product.Price * item.Quantity;
+            subtotal += product.Price.getAmount() * item.Quantity;
         }
 
         var total = _discountService.Apply(subtotal);
 
-        var order = new Order(Guid.NewGuid(), "Pending", 0m, cart.CustomerId);
+        var order = new Order(Guid.NewGuid(), "Pending", new Money(0, Currency.EGP), cart.CustomerId);
 
         foreach (var item in cart.Items)
         {
@@ -54,7 +54,7 @@ public class OrderProcessor
             product.ReduceStock(item.Quantity);
         }
 
-        order.SetTotalAmount(total);
+        order.SetTotalAmount(new Money(total, Currency.EGP));
         
         _notification.SendConfirmation();
 
