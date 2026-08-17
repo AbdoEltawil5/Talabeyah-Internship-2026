@@ -32,12 +32,9 @@ Console.WriteLine("Calling GetProducts");
 var result = productService.GetProducts();
 Console.WriteLine("GetProducts returned (iterator should not have run yet)");
 
-Console.WriteLine("Starting foreach");
-foreach (var p in result)
-{
-    Console.WriteLine($"{p.Name}");
-}
-Console.WriteLine("Foreach done");
+Console.WriteLine("Starting CustomForEach");
+result.CustomForEach(p => Console.WriteLine($"{p.Name}"));
+Console.WriteLine("CustomForEach done");
 Console.WriteLine();
 
 IStockValidator stockValidator = new StockValidator();
