@@ -33,7 +33,7 @@ public class Order : ISummarizable
     public void AddItem(Product product, int quantity)
     {
         OrderItems.Add(new OrderItem(Guid.NewGuid(), Id, product, quantity, product.Price));
-        TotalAmount = TotalAmount.Add(product.Price.Multiply(quantity));
+        TotalAmount = TotalAmount + product.Price * quantity;
     }
 
     public void UpdateStatus(string status)

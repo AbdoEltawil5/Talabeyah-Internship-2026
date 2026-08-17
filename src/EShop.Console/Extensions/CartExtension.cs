@@ -15,7 +15,7 @@ public static class CartExtension
             if (product is null)
                 throw new InvalidOperationException($"Product {item.ProductId} not found.");
 
-            total = total.Add(product.Price.Multiply(item.Quantity));
+            total = total + product.Price * item.Quantity;
         }
 
         return total;

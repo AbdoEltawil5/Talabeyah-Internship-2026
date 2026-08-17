@@ -17,6 +17,6 @@ public class PercentageDiscount : IDiscountService
     public Money Apply(Money subtotal)
     {
         var discountAmount = subtotal.Amount * (_percent / 100m);
-        return subtotal.Subtract(new Money(discountAmount, subtotal.Currency));
+        return subtotal - new Money(discountAmount, subtotal.Currency);
     }
 }

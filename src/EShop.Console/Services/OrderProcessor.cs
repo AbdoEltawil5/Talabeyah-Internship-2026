@@ -37,7 +37,7 @@ public class OrderProcessor
             if (product is null)
                 throw new InvalidOperationException($"Product {item.ProductId} not found.");
 
-            subtotal = subtotal.Add(product.Price.Multiply(item.Quantity));
+            subtotal = subtotal + product.Price * item.Quantity;
         }
 
         var total = _discountService.Apply(subtotal);

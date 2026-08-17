@@ -21,5 +21,5 @@ public class OrderItem
         Price = price;
     }
 
-    public Money LineTotal => Price.Multiply(Quantity);
+    public Money LineTotal => Price * Quantity;
 }
