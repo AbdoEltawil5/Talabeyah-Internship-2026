@@ -1,3 +1,5 @@
+using EShop.Console.ValueObjects;
+
 namespace EShop.Console.Services;
 
 public class PercentageDiscount : IDiscountService
@@ -12,9 +14,9 @@ public class PercentageDiscount : IDiscountService
         _percent = percent;
     }
 
-    public decimal Apply(decimal subtotal)
+    public Money Apply(Money subtotal)
     {
-        var discountAmount = subtotal * (_percent / 100m);
-        return subtotal - discountAmount;
+        var discountAmount = subtotal.Amount * (_percent / 100m);
+        return subtotal - new Money(discountAmount, subtotal.Currency);
     }
 }

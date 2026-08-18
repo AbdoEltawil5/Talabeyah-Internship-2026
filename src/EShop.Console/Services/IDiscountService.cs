@@ -1,6 +1,8 @@
+using EShop.Console.ValueObjects;
+
 namespace EShop.Console.Services;
 
 public interface IDiscountService
 {
-    decimal Apply(decimal subtotal);
+    Money Apply(Money subtotal);
 }

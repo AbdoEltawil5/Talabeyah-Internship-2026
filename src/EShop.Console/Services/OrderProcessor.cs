@@ -1,5 +1,6 @@
 using EShop.Console.Entities;
 using EShop.Console.Notifications;
+using EShop.Console.ValueObjects;
 
 namespace EShop.Console.Services;
 
@@ -29,19 +30,19 @@ public class OrderProcessor
 
         _stockValidator.Validate(cart, products);
 
-        decimal subtotal = 0;
+        var subtotal = new Money(0m);
         foreach (var item in cart.Items)
         {
             var product = products.FirstOrDefault(p => p.Id == item.ProductId);
             if (product is null)
                 throw new InvalidOperationException($"Product {item.ProductId} not found.");
-            
-            subtotal += product.Price * item.Quantity;
+
+            subtotal = subtotal + product.Price * item.Quantity;
         }
 
         var total = _discountService.Apply(subtotal);
 
-        var order = new Order(Guid.NewGuid(), "Pending", 0m, cart.CustomerId);
+        var order = new Order(Guid.NewGuid(), "Pending", new Money(0m), cart.CustomerId);
 
         foreach (var item in cart.Items)
         {
