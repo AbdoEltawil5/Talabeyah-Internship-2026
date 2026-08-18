@@ -1,32 +1,87 @@
 using EShop.Console.Entities;
+using EShop.Console.Extensions;
 using EShop.Console.Notifications;
 using EShop.Console.Services;
+using EShop.Console.Shared;
 
-var parentCategory = new Category(Guid.NewGuid(), "Electronics", null);
-var phones = new Category(Guid.NewGuid(), "Phones", parentCategory.Id);
-parentCategory.AddSubCategory(phones);
+// var parentCategory = new Category(Guid.NewGuid(), "Electronics", null);
+// var phones = new Category(Guid.NewGuid(), "Phones", parentCategory.Id);
+// parentCategory.AddSubCategory(phones);
+//
+// var product = new Product(Guid.NewGuid(), "Iphone", "Iphone 17 pro max", new Money(50000m), 10, phones);
+// phones.AddProduct(product);
+//
+// var customer = new Customer(Guid.NewGuid(), "Baselyosry", "baselyosry@gmail.com", "password");
+// var cart = new Cart(Guid.NewGuid(), customer.Id);
+// cart.AddItem(product.Id, 1);
+//
+// var products = new List<Product>(){product};
+//
+// IStockValidator stockValidator = new StockValidator();
+// IDiscountService discountService = new PercentageDiscount(10);
+// Notification notification = new EmailNotification();
+//
+// var orderProcessor = new OrderProcessor(
+//     stockValidator,
+//     discountService,
+//     notification);
+//
+// var order = orderProcessor.PlaceOrder(cart, products);
+//
+// Console.WriteLine(product.Summarize());
+// Console.WriteLine(cart.Summarize());
+// Console.WriteLine(order.Summarize());
+// Console.WriteLine(customer.Summarize());
+// var parentCategory = new Category(Guid.NewGuid(), "Electronics", null);
+// var phones = new Category(Guid.NewGuid(), "Phones", parentCategory.Id);
+// parentCategory.AddSubCategory(phones);
+//
+// var product = new Product(Guid.NewGuid(), "Iphone", "Iphone 17 pro max", new Money(50000m), 10, phones);
+// phones.AddProduct(product);
+//
+// var customer = new Customer(Guid.NewGuid(), "Baselyosry", "baselyosry@gmail.com", "password");
+// var cart = new Cart(Guid.NewGuid(), customer.Id);
+// cart.AddItem(product.Id, 1);
+//
+// var products = new List<Product>(){product};
+//
+// IStockValidator stockValidator = new StockValidator();
+// IDiscountService discountService = new PercentageDiscount(10);
+// Notification notification = new EmailNotification();
+//
+// var orderProcessor = new OrderProcessor(
+//     stockValidator,
+//     discountService,
+//     notification);
+//
+// var order = orderProcessor.PlaceOrder(cart, products);
+//
+// Console.WriteLine(product.Summarize());
+// Console.WriteLine(cart.Summarize());
+// Console.WriteLine(order.Summarize());
+// Console.WriteLine(customer.Summarize());
 
-var product = new Product(Guid.NewGuid(), "Iphone", "Iphone 17 pro max", 50000m, 10, phones);
-phones.AddProduct(product);
+//=============================================
+//---------------- Task 2 ---------------------
+//=============================================
 
-var customer = new Customer(Guid.NewGuid(), "Baselyosry", "baselyosry@gmail.com", "password");
-var cart = new Cart(Guid.NewGuid(), customer.Id);
-cart.AddItem(product.Id, 1);
+IProductService productService = new ProductService();
+Console.WriteLine("before getproducts called");
+var products = productService.GetProducts();
+Console.WriteLine("after getproducts called");
 
-var products = new List<Product>(){product};
+products.CustomForEach(p => Console.WriteLine(p));
 
-IStockValidator stockValidator = new StockValidator();
-IDiscountService discountService = new PercentageDiscount(10);
-Notification notification = new EmailNotification();
+//Console.WriteLine("This message appears before iteration start.\n");
 
-var orderProcessor = new OrderProcessor(
-    stockValidator,
-    discountService,
-    notification);
+// foreach (var product in products)
+// {
+//     Console.WriteLine(product);
+// }
 
-var order = orderProcessor.PlaceOrder(cart, products);
+// IProductService productService = new ProductService();
+// IOrderService orderService = new OrderService(productService);
 
-Console.WriteLine(product.Summarize());
-Console.WriteLine(cart.Summarize());
-Console.WriteLine(order.Summarize());
-Console.WriteLine(customer.Summarize());
+//Console.WriteLine(orderService.GetOrderReceipt_String());
+
+//Console.WriteLine(orderService.GetOrderReceipt_StringBuilder());
