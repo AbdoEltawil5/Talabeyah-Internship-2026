@@ -6,13 +6,13 @@ public class Order : ISummarizable
 {
     public Guid Id { get; private set; }
     public string Status { get; private set; }
-    public decimal TotalAmount { get; private set; }
+    public Money TotalAmount { get; private set; }
     public DateTime CreatedAt { get; private set; }
     public List<OrderItem> OrderItems { get; private set; } = new();
     public Guid CustomerId { get; private set; }
     public Customer Customer { get; private set; }
 
-    public Order(Guid id, string status, decimal totalAmount, Guid customerId)
+    public Order(Guid id, string status, Money totalAmount, Guid customerId)
     {
         if (id == Guid.Empty)
             throw new ArgumentException("Id cannot be empty");
@@ -31,8 +31,8 @@ public class Order : ISummarizable
 
     public void AddItem(Product product, int quantity)
     {
-        OrderItems.Add(new OrderItem(Guid.NewGuid(), Id, product, quantity, product.Price));
-        TotalAmount += product.Price * quantity;
+        OrderItems.Add(new OrderItem(Guid.NewGuid(), Id, product, quantity, product.Price.getAmount()));
+        TotalAmount = TotalAmount.setAmount(TotalAmount.getAmount() + (product.Price.getAmount() * quantity));
     }
 
     public void UpdateStatus(string status)
@@ -40,9 +40,9 @@ public class Order : ISummarizable
         Status = status;
     }
 
-    public void SetTotalAmount(decimal totalAmount)
+    public void SetTotalAmount(Money totalAmount)
     {
-        if (totalAmount < 0)
+        if (totalAmount.getAmount() < 0)
             throw new ArgumentException("Total amount cannot be less than zero.");
 
         TotalAmount = totalAmount;
@@ -50,6 +50,6 @@ public class Order : ISummarizable
 
     public string Summarize()
     {
-        return $"Order {Id}: {Status}, Total: {TotalAmount}";
+        return $"Order {Id}: {Status}, Total: {TotalAmount.getAmount()}";
     }
 }
