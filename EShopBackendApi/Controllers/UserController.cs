@@ -20,19 +20,8 @@ public class UserController : ControllerBase
     [HttpPost("register")]
     public async Task<IActionResult> Register([FromBody] CredentialsRequest request)
     {
-        try
-        {
-            var user = await _userService.RegisterAsync(request);
-            return Ok(user);
-        }
-        catch (ArgumentException ex)
-        {
-            return BadRequest(new { message = ex.Message });
-        }
-        catch (InvalidOperationException ex)
-        {
-            return BadRequest(new { message = ex.Message });
-        }
+        var user = await _userService.RegisterAsync(request);
+        return Ok(user);
     }
 
     [Authorize]

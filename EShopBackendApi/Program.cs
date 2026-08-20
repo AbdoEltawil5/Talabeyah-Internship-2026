@@ -1,5 +1,6 @@
 using System.Text;
 using Application;
+using EShopBackendApi.Middleware;
 using EShopBackendApi.Services;
 using Infrastructure;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -70,6 +71,8 @@ public class Program
         });
 
         var app = builder.Build();
+
+        app.UseMiddleware<GlobalExceptionMiddleware>();
 
         if (app.Environment.IsDevelopment())
         {

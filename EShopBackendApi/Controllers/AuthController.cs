@@ -21,19 +21,8 @@ public class AuthController : ControllerBase
     [HttpPost("login")]
     public async Task<IActionResult> Login([FromBody] CredentialsRequest request)
     {
-        try
-        {
-            var user = await _userService.LoginAsync(request);
-            var token = _jwtTokenHelper.GenerateToken(user);
-            return Ok(token);
-        }
-        catch (ArgumentException ex)
-        {
-            return BadRequest(new { message = ex.Message });
-        }
-        catch (UnauthorizedAccessException)
-        {
-            return Unauthorized(new { message = "Invalid email or password." });
-        }
+        var user = await _userService.LoginAsync(request);
+        var token = _jwtTokenHelper.GenerateToken(user);
+        return Ok(token);
     }
 }
